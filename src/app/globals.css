@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-plus-jakarta-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 210 40% 98%; /* #F8FAFC */
+    --foreground: 0 0% 7.1%; /* #121212 */
+    --card: 0 0% 100%; /* #FFFFFF - Block Background Light */
+    --card-foreground: 0 0% 7.1%; /* #121212 - Block Text Light */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7.1%;
+    --primary: 225 100% 60%; /* #3366FF - Link & Accent */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - Text on Accent */
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 40%; /* #666666 - Bio/Secondary Text Light */
+    --accent: 0 0% 96.1%; /* Used for hover states on some components, should be subtle */
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 87.8%; /* #E0E0E0 - Block Border Light */
+    --input: 0 0% 89.8%;
+    --ring: 225 100% 60%; /* Accent color for rings */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --body-text-light: 0 0% 20%; /* #333333 */
+    --body-text-dark: 0 0% 80%; /* #CCCCCC */
+
+    /* Sidebar Theme Variables - Light Mode */
+    --sidebar-background: 0 0% 100%; /* #FFFFFF - White */
+    --sidebar-foreground: 0 0% 7.1%; /* #121212 - Same as main foreground */
+    --sidebar-border: 0 0% 87.8%;     /* #e0e0e0 - Same as main border */
+    --sidebar-accent: 220 100% 92%;    /* #d9e8ff - Light primary for active/hover background */
+    --sidebar-accent-foreground: 225 80% 45%; /* #3366FF - Primary color for active/hover text */
+    --sidebar-ring: 225 100% 60%;     /* #3366FF - Same as main ring */
+  }
+  .dark {
+    --background: 0 0% 7.1%; /* #121212 */
+    --foreground: 0 0% 98%; /* #FFFFFF (close to #FFFFFF) */
+    --card: 0 0% 11.8%; /* #1e1e1e - Block Background Dark */
+    --card-foreground: 0 0% 98%; /* #FFFFFF - Block Text Dark */
+    --popover: 0 0% 7.1%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 225 100% 60%; /* #3366FF - Link & Accent */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF - Text on Accent */
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 60%; /* #999999 - Bio/Secondary Text Dark */
+    --accent: 0 0% 14.9%; /* Used for hover states on some components */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 17.3%; /* #2c2c2c - Block Border Dark */
+    --input: 0 0% 14.9%;
+    --ring: 225 100% 60%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Sidebar Theme Variables - Dark Mode */
+    --sidebar-background: 0 0% 11.8%;  /* #1e1e1e - Similar to card background */
+    --sidebar-foreground: 0 0% 98%;    /* #fafafa - Same as main foreground */
+    --sidebar-border: 0 0% 17.3%;      /* #2c2c2c - Same as main border */
+    --sidebar-accent: 225 20% 25%;     /* #333b4d - Darker primary for active/hover background */
+    --sidebar-accent-foreground: 225 90% 85%; /* #c0d0ff - Lighter primary for active/hover text */
+    --sidebar-ring: 225 100% 60%;      /* #3366FF - Same as main ring */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Remove focus rings globally for focus-visible state */
+  *:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+@layer utilities {
+  .text-body {
+    color: hsl(var(--body-text-light));
+  }
+  .dark .text-body {
+    color: hsl(var(--body-text-dark));
+  }
+
+  /* Pastel color overrides for blocks */
+  .pastel-blue { --card: hsl(205, 90%, 90%); --border: hsl(205, 80%, 80%); --card-foreground: hsl(205, 30%, 30%); }
+  .dark .pastel-blue { --card: hsl(205, 40%, 20%); --border: hsl(205, 35%, 30%); --card-foreground: hsl(205, 80%, 85%); }
+  
+  .pastel-lavender { --card: hsl(250, 70%, 92%); --border: hsl(250, 60%, 82%); --card-foreground: hsl(250, 30%, 40%); }
+  .dark .pastel-lavender { --card: hsl(250, 30%, 22%); --border: hsl(250, 25%, 32%); --card-foreground: hsl(250, 60%, 88%); }
+
+  .pastel-mint { --card: hsl(150, 70%, 90%); --border: hsl(150, 60%, 80%); --card-foreground: hsl(150, 30%, 30%); }
+  .dark .pastel-mint { --card: hsl(150, 30%, 20%); --border: hsl(150, 25%, 30%); --card-foreground: hsl(150, 60%, 85%); }
+
+  .pastel-peach { --card: hsl(25, 100%, 92%); --border: hsl(25, 90%, 82%); --card-foreground: hsl(25, 50%, 45%); }
+  .dark .pastel-peach { --card: hsl(25, 40%, 22%); --border: hsl(25, 35%, 32%); --card-foreground: hsl(25, 80%, 88%); }
+
+  .pastel-yellow { --card: hsl(50, 100%, 90%); --border: hsl(50, 90%, 80%); --card-foreground: hsl(50, 40%, 35%); }
+  .dark .pastel-yellow { --card: hsl(50, 40%, 20%); --border: hsl(50, 35%, 30%); --card-foreground: hsl(50, 80%, 85%); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
